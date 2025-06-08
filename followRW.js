@@ -24,6 +24,7 @@ function startDisco() {
     }
     function discoStep() {
       if (!discoActive) return;
+      document.body.style.color = randomColor();
       document.body.style.backgroundColor = randomColor();
       setTimeout(discoStep, 400 + Math.random() * 400); // 400–800ms between flashes
     }

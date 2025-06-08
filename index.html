@@ -125,7 +125,6 @@ followRw();
 
 function checkDevTools() {
     const start = performance.now();
-    debugger; // Will pause if DevTools is open
     const time = performance.now() - start;
     if (time > 100) { // 100ms threshold for pause
         if (!devtoolsOpen) {

@@ -8,4 +8,25 @@ function followRW() {
 -------------------------
         Careful! Flashing lights ahead!
   `);
+  startDisco();
 }
+
+function startDisco() {
+    if (!confirm("Warning: The disco mode will cause flashing colors that may affect sensitive viewers. Do you want to continue?")) {
+      return;
+    }
+    let discoActive = true;
+    function randomColor() {
+      // Gentle, pastel-ish random color
+      const hue = Math.floor(Math.random() * 360);
+      return `hsl(${hue}, 80%, 60%)`;
+    }
+    function discoStep() {
+      if (!discoActive) return;
+      document.body.style.backgroundColor = randomColor();
+      setTimeout(discoStep, 400 + Math.random() * 400); // 400–800ms between flashes
+    }
+    discoStep();
+    // Stop disco after 20 seconds (optional)
+    setTimeout(() => { discoActive = false; document.body.style.backgroundColor = "black"; }, 20000);
+  }

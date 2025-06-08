@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Check the console output -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brendan Jacobs - Portfolio</title>
@@ -31,6 +32,10 @@
         .blinking {
             animation: blink 1s infinite;
         }
+        a, a:visited {
+  color: inherit;        /* Make link text use the surrounding text color */
+  text-decoration: none; 
+}
         @keyframes blink {
             50% { opacity: 0; }
         }
@@ -56,8 +61,55 @@
             <p>> Developed multiple systems used for asset management & quality management</p>
             <p>> Integrations with Sage, InnKeeper, iMIS, Firebase among various other API's</p>
             <p>_</p>
-            <p class="blinking">█</p>
+            <div id="terminal-output"></div>
+<div style="display: flex;">
+  <span>> </span>
+  <input 
+    id="terminal-input"
+    type="text"
+    autofocus
+    style="background: black; border: none; color: #33ff33; font-family: 'VT323', monospace; font-size: 20px; width: 100%; outline: none;"
+    autocomplete="off"
+    spellcheck="false"
+  />
+</div>
         </div>
     </div>
 </body>
+    <script>
+const replies = {
+  hello: "Hi there! How can I help you today? Follow.",
+  help: "Available commands: hello, skills, contact, follow",
+  follow: "Follow the RW-ball... (F12)",
+  skills: "Web Technologies: RESTful API, ASP.Net Core, Django... \r\nProgramming: C#, Python, Java, JavaScript, React Native...",
+  contact: 'Email: <a href="mailto:brendan0jacobs@gmail.com">brendan0jacobs@gmail.com</a> | Phone: +27 83 389 2171'
+};
+
+const terminalInput = document.getElementById('terminal-input');
+const terminalOutput = document.getElementById('terminal-output');
+
+terminalInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    const input = terminalInput.value.trim();
+    if (input) {
+      addLine(`> ${input}`);
+      const response = replies[input.toLowerCase()] || "Unknown command. Type 'help' for a list of commands.";
+      addLine(response);
+      terminalInput.value = '';
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+  }
+});
+
+function addLine(text) {
+  const p = document.createElement('p');
+  p.innerHTML = text;
+  terminalOutput.appendChild(p);
+}
+</script>
+    <script>
+        function followTheRwBall() {
+            console.log("Well done. Execute function `followRW()` in the console.")
+        }
+    </script>
 </html>

@@ -15,6 +15,7 @@ function startDisco() {
     if (!confirm("Warning: The disco mode will cause flashing colors that may affect sensitive viewers. Do you want to continue?")) {
       return;
     }
+    console.log("Trying to activate disco")
     let discoActive = true;
     function randomColor() {
       // Gentle, pastel-ish random color

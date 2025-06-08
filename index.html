@@ -114,16 +114,35 @@ function addLine(text) {
   console.log("followTheRWBall called!");
 followRw();
 
-  // Start the timeout ONLY after this function is called
-  setTimeout(() => {
-    console.log("🐇◓🔴");
-    // Place any code you want to run after the timeout here
-  }, 3000); // 10,000ms = 10 seconds
 }
         function followTheRwBall() {
             console.log("Well done. Execute function `followRW()` in the console.")
             
         }
+    </script>
+    <script>
+        let devtoolsOpen = false;
+
+function checkDevTools() {
+    const start = performance.now();
+    debugger; // Will pause if DevTools is open
+    const time = performance.now() - start;
+    if (time > 100) { // 100ms threshold for pause
+        if (!devtoolsOpen) {
+            devtoolsOpen = true;
+             // Start the timeout ONLY after this function is called
+  setTimeout(() => {
+    console.log("🐇◓🔴 run `followTheRwBall()`");
+    
+  }, 3000); // 10,000ms = 10 seconds
+        }
+    } else {
+        devtoolsOpen = false;
+    }
+}
+
+// Polling interval (adjust as needed)
+setInterval(checkDevTools, 1000);
     </script>
     
 </html>

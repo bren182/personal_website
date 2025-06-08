@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+ <!-- 🐇◓🔴 Check the console output -->
 <html lang="en">
 <head>
-    <!-- Check the console output -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="followRW.js"></script>
@@ -34,7 +34,7 @@
             animation: blink 1s infinite;
         }
         a, a:visited {
-  color: inherit;        /* Make link text use the surrounding text color */
+  color: inherit;      
   text-decoration: none; 
 }
         @keyframes blink {
@@ -110,7 +110,6 @@ function addLine(text) {
 </script>
     <script>
         function followTheRWBall() {
-  // Your function logic here
   console.log("followTheRWBall called!");
 followRw();
 
@@ -125,22 +124,21 @@ followRw();
 
 function checkDevTools() {
     const start = performance.now();
+    debugger;
     const time = performance.now() - start;
-    if (time > 100) { // 100ms threshold for pause
+    if (time > 100) {
         if (!devtoolsOpen) {
             devtoolsOpen = true;
-             // Start the timeout ONLY after this function is called
+            
   setTimeout(() => {
     console.log("🐇◓🔴 run `followTheRwBall()`");
     
-  }, 3000); // 10,000ms = 10 seconds
+  }, 3000);
         }
     } else {
         devtoolsOpen = false;
     }
 }
-
-// Polling interval (adjust as needed)
 setInterval(checkDevTools, 1000);
     </script>
     

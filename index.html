@@ -109,8 +109,21 @@ function addLine(text) {
 }
 </script>
     <script>
+        function followTheRWBall() {
+  // Your function logic here
+  console.log("followTheRWBall called!");
+followRw();
+
+  // Start the timeout ONLY after this function is called
+  setTimeout(() => {
+    console.log("🐇◓🔴");
+    // Place any code you want to run after the timeout here
+  }, 3000); // 10,000ms = 10 seconds
+}
         function followTheRwBall() {
             console.log("Well done. Execute function `followRW()` in the console.")
+            
         }
     </script>
+    
 </html>
